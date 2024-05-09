@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		563995B22BED05F6003BD8C9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563995B12BED05F6003BD8C9 /* ImagePicker.swift */; };
-		563995B42BED3A93003BD8C9 /* PencilKitCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563995B32BED3A93003BD8C9 /* PencilKitCanvas.swift */; };
 		563995B62BED3F15003BD8C9 /* DrawingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563995B52BED3F15003BD8C9 /* DrawingViewModel.swift */; };
 		563995B82BED3FF0003BD8C9 /* DrawingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563995B72BED3FF0003BD8C9 /* DrawingScreen.swift */; };
+		563995BA2BED5114003BD8C9 /* TextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563995B92BED5114003BD8C9 /* TextBox.swift */; };
+		563995BE2BED75BC003BD8C9 /* ApplyEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563995BD2BED75BC003BD8C9 /* ApplyEffects.swift */; };
+		563995C02BED7699003BD8C9 /* ChooseOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563995BF2BED7699003BD8C9 /* ChooseOptionView.swift */; };
 		5654500C2BE8BAB500799B65 /* AuthorizationAezakmiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5654500B2BE8BAB500799B65 /* AuthorizationAezakmiApp.swift */; };
 		5654500E2BE8BAB500799B65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5654500D2BE8BAB500799B65 /* ContentView.swift */; };
 		565450102BE8BAB700799B65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5654500F2BE8BAB700799B65 /* Assets.xcassets */; };
@@ -36,9 +38,11 @@
 		1CB76B0CCBC8A86C795C0FEF /* Pods-AuthorizationAezakmi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthorizationAezakmi.debug.xcconfig"; path = "Target Support Files/Pods-AuthorizationAezakmi/Pods-AuthorizationAezakmi.debug.xcconfig"; sourceTree = "<group>"; };
 		46196CBDD7CDB672DC10A098 /* Pods-AuthorizationAezakmi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthorizationAezakmi.release.xcconfig"; path = "Target Support Files/Pods-AuthorizationAezakmi/Pods-AuthorizationAezakmi.release.xcconfig"; sourceTree = "<group>"; };
 		563995B12BED05F6003BD8C9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		563995B32BED3A93003BD8C9 /* PencilKitCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilKitCanvas.swift; sourceTree = "<group>"; };
 		563995B52BED3F15003BD8C9 /* DrawingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingViewModel.swift; sourceTree = "<group>"; };
 		563995B72BED3FF0003BD8C9 /* DrawingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingScreen.swift; sourceTree = "<group>"; };
+		563995B92BED5114003BD8C9 /* TextBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBox.swift; sourceTree = "<group>"; };
+		563995BD2BED75BC003BD8C9 /* ApplyEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyEffects.swift; sourceTree = "<group>"; };
+		563995BF2BED7699003BD8C9 /* ChooseOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseOptionView.swift; sourceTree = "<group>"; };
 		565450082BE8BAB500799B65 /* AuthorizationAezakmi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthorizationAezakmi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5654500B2BE8BAB500799B65 /* AuthorizationAezakmiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationAezakmiApp.swift; sourceTree = "<group>"; };
 		5654500D2BE8BAB500799B65 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 		56FF2D2E2BEBF5DA00EA3B88 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				563995B92BED5114003BD8C9 /* TextBox.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -144,8 +149,9 @@
 				56FF2D3E2BEC0A1300EA3B88 /* LoginView.swift */,
 				56FF2D462BEC1AC700EA3B88 /* MainView.swift */,
 				563995B12BED05F6003BD8C9 /* ImagePicker.swift */,
-				563995B32BED3A93003BD8C9 /* PencilKitCanvas.swift */,
 				563995B72BED3FF0003BD8C9 /* DrawingScreen.swift */,
+				563995BD2BED75BC003BD8C9 /* ApplyEffects.swift */,
+				563995BF2BED7699003BD8C9 /* ChooseOptionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -306,8 +312,10 @@
 				56FF2D332BEC044200EA3B88 /* ViewModifiers.swift in Sources */,
 				5654500E2BE8BAB500799B65 /* ContentView.swift in Sources */,
 				56FF2D392BEC077200EA3B88 /* OrView.swift in Sources */,
+				563995BA2BED5114003BD8C9 /* TextBox.swift in Sources */,
+				563995BE2BED75BC003BD8C9 /* ApplyEffects.swift in Sources */,
+				563995C02BED7699003BD8C9 /* ChooseOptionView.swift in Sources */,
 				563995B62BED3F15003BD8C9 /* DrawingViewModel.swift in Sources */,
-				563995B42BED3A93003BD8C9 /* PencilKitCanvas.swift in Sources */,
 				56C01A3D2BE90214007C1E8E /* Extensions.swift in Sources */,
 				56FF2D2D2BE974D100EA3B88 /* ForgotPasswordView.swift in Sources */,
 				5654500C2BE8BAB500799B65 /* AuthorizationAezakmiApp.swift in Sources */,

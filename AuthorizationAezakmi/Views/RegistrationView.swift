@@ -10,7 +10,7 @@ import SwiftUI
 struct RegistrationView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var model: DrawingViewModel
+    @StateObject var model = DrawingViewModel()
 
     @StateObject var signingViewModel: SigningViewModel
     
@@ -89,15 +89,16 @@ struct RegistrationView: View {
                         
                         OrView()
                         
-                        GoogleSigningButton(isSignIn: false, onTapAction: {
-                            print("sign-up-with-google-string")
-                        })
-                        
+                        GoogleSigningButton(isSignIn: true) {
+                            signingViewModel.signInWithGoogle(completion: { success in
+                                
+                            })
+                        }
                     }
                     .padding(15)
                     
                     .fullScreenCover(isPresented: $isMainViewPresented) {
-                        MainView(model: model, signingViewModel: signingViewModel)
+                        ChooseOptionView()
                     }
                     .onAppear {
                         signingViewModel.signInSuccessCallback = {
@@ -140,8 +141,4 @@ struct RegistrationView: View {
             .ignoresSafeArea()
         }
     }
-}
-
-#Preview {
-    MainView(model: DrawingViewModel(), signingViewModel: SigningViewModel())
 }

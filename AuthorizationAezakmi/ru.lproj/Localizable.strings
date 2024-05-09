@@ -2,13 +2,10 @@
 "register-string" = "Регистрация";
 "welcome-string" = "Добро пожаловать";
 "hello-string %@" = "Здравствуйте, %@";
-"email-string" = "Email";
+"email-string" = "Почтовый адрес";
 "password-string" = "Пароль";
 "sign-in-with-google-string" = "Войти с Google";
 "sign-up-with-google-string" = "Зарегистрироваться с Google";
-"sign-in-string" = "Войти";
-"sign-up-string" = "Зарегистрироваться";
-"sign-out-string" = "Выйти";
 "forgot-password-string" = "Забыли пароль?";
 "sign-in-string" = "Войти";
 "sign-up-string" = "Зарегистрироваться";
@@ -16,5 +13,48 @@
 "or-string" = "ИЛИ";
 "dont-have-account-string" = "Нету аккаунта?";
 "already-have-an-account-string" = "Уже есть аккаунт?";
-"is-signed-in-string" = "Вы зарегистрированы";
+"is-signed-in-string" = "Вы авторизованы в приложении";
 
+"password-recovery-string" = "Восстановление пароля";
+"password-recovery-link-sent-to %@" = "Ссылка для восстановления пароля была выслана в %@";
+"ok-string" = "ОК";
+
+"enter-your-email-string" = "введите почтовый адрес";
+"send-recovery-email-string" = "Отправить письмо с ссылкой для восстановления пароля";
+"alert-string" = "Внимание";
+
+
+"forgot-password-string" = "Забыли пароль";
+
+"signing-in-string" = "Входим...";
+"signing-up-string" = "Регистрируемся...";
+"invalid-email-or-password-string" = "Неправильный почтовый адрес или пароль";
+
+"select-a-picture-string" = "Выберите фотографию";
+"invalid-string" = "Неправильные данные";
+"rotate-string" = "Повернуть";
+"scale-string" = "Увеличить";
+"photo-editor-string" = "Редактор фото";
+"error-loading-image-string" = "Ошибка с загрузкой фото: ";
+
+"rotation-string" = "Наклон";
+"intensity-string" = "Интенсивность";
+"zoom-string" = "Зум";
+"no-picture-string" = "Нет фотки";
+"tap-to-select-a-photo-string" = "Нажмите, чтобы выбрать фото";
+"change-filter-string" = "Поменять фильтр";
+"sepia-tone-string" = "Тон сепия";
+"remove-effect-string" = "Убрать эффект";
+"save-string" = "Сохранить";
+"add-string" = "Добавить";
+"cancel-string" = "Отменить";
+"type-here-string" = "Печатайте тут";
+"save-string" = "Сохранить";
+"saved-photo-succesfully-string" = "Фото успешно сохранено";
+"success-string" = "Успех";
+"message-string" = "Сообщение";
+"share-string" = "Поделиться";
+
+"apply-effects-string" = "Добавить эффекты";
+"draw-string" = "Нарисовать";
+"remove-image-string" = "Убрать фото";

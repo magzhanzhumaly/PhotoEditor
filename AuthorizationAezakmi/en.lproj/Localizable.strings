@@ -25,7 +25,6 @@
 
 
 "forgot-password-string" = "Forgot password";
-"enter-your-email-string" = "Enter your email";
 
 "signing-in-string" = "Signing in...";
 "signing-up-string" = "Signing up...";
@@ -46,4 +45,16 @@
 "change-filter-string" = "Change Filter";
 "sepia-tone-string" = "Sepia tone";
 "remove-effect-string" = "Remove effect";
-"change-filter-string" = "Change Filter";
+"save-string" = "Save";
+"add-string" = "Add";
+"cancel-string" = "Cancel";
+"type-here-string" = "Type here";
+"save-string" = "Save";
+"saved-photo-succesfully-string" = "Saved photo successfully";
+"success-string" = "Success";
+"message-string" = "Message";
+"share-string" = "Share";
+
+"apply-effects-string" = "Apply effects";
+"draw-string" = "Draw";
+"remove-image-string" = "Remove image";

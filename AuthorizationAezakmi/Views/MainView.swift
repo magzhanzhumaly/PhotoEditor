@@ -19,159 +19,130 @@ struct MainView: View {
     @State private var processedImage: Image? // = Image(uiImage: UIImage(named: "AppIcon")!)
     @State private var selectedItem: PhotosPickerItem?
     
-    //    @State private var isShowingImagePicker = false
     @State private var rotationAngle: Double = 0.0
     @State private var scale: CGFloat = 1.0
     @State private var filterIntensity = 0.5
     @State private var canvasView = PKCanvasView()
-
+    
     
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
     
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                Spacer()
+        ZStack {
+            NavigationView {
                 
-                //                if processedImage == nil {
-                //                    PhotosPicker(selection: $pickerItem, matching: .images) {
-                PhotosPicker(selection: $selectedItem, matching: .images) {
-                    if processedImage != nil {
-                        //                            self.processedImage = processedImage
+                VStack {
+                    
+                    // Image is added
+                    
+                    if let _ = UIImage(data: model.imageData) {
                         
-                        //                        processedImage
-                        //                            .resizable()
-                        //                            .scaledToFill()
+                        DrawingScreen()
+                            .environmentObject(model)
                         
-                        ZStack(alignment: .topTrailing) {
-                            
-                            VStack {
-                                Spacer()
+                            .toolbar(content: {
                                 
-                                
-                                DrawingScreen()
-                                    .environmentObject(model)
-                                processedImage!
-                                    .resizable()
-                                    .scaledToFit()
-                                    .rotationEffect(Angle(degrees: rotationAngle))
-                                    .scaleEffect(scale)
-                                    .overlay(PencilKitCanvas(canvasView: $canvasView))
-
-                                Spacer()
-                            }
-                            
-                            Button {
-                                processedImage = nil
-                            } label: {
-                                Image(systemName: "xmark")
-                                    .foregroundStyle(.red)
-                            }
-                            .padding(.trailing, 15)
-                            
-                        }
+                                ToolbarItem(placement: .navigationBarLeading) {
+                                    Button(action: model.cancelImageEditing, label: {
+                                        Image(systemName: "xmark")
+                                    })
+                                }
+                            })
+                        
+                    // Image isn't added
                     } else {
-                        VStack {
-                            if #available(iOS 17.0, *) {
-                                ContentUnavailableView("no-picture-string", systemImage: "photo.badge.plus", description: Text("tap-to-select-a-photo-string"))
-                            } else {
-                                Label("select-a-picture-string", systemImage: "photo")
-                            }
-                            
-                            Spacer()
-                            
-                        }
-                    }
-                }
-                .buttonStyle(.plain)
-                .onChange(of: selectedItem) { newItem in
-                    loadImage()
-                }
-                
-                HStack {
-                    Text("rotation-string")
-                        .frame(width: 80)
-                    
-                    Slider(value: $rotationAngle, in: 0...360)
-                }
-                .padding(.leading, 15)
-                .padding(.trailing, 15)
-                
-                
-                HStack {
-                    Text("intensity-string")
-                        .frame(width: 80)
-                    
-                    Slider(value: $filterIntensity, in: 0.0...1.0) {
-                        Text("scale-string")
-                    }
-                    .onChange(of: filterIntensity, applyFilter)
-                }
-                .padding(.leading, 15)
-                .padding(.trailing, 15)
-                
-                HStack {
-                    Text("zoom-string")
-                        .frame(width: 80)
-                    
-                    Slider(value: $scale, in: 0.5...2.0) {
-                        Text("scale-string")
-                    }
-                }
-                .padding(.leading, 15)
-                .padding(.trailing, 15)
-                
-                HStack {
-//                    Button("change-filter-string", action: applyFilter)
-                    Menu {
-                        Button("sepia-tone-string") {
-                            currentFilter = CIFilter.sepiaTone()
-                            applyFilter()
-                        }
-                        Button("remove-effect-string") {
-                            filterIntensity = 0
-                            applyFilter()
-//                            currentFilter = CIFilter.sepiaTone()
-                            
-//                            applyFilter()
-                        }
-                        // Add more filter options here as needed
-                    } label: {
-                        Label("change-filter-string", systemImage: "wand.and.rays")
-                    }
-
-                }
-                //                .onChange(of: selectedItem, loadImage)
-                
-                if processedImage == nil {
-                    HStack {
-                        Text("is-signed-in-string")
-                            .foregroundStyle(.black)
                         
-                        Button {
-                            signingViewModel.signOut()
-                        } label: {
-                            Text("sign-out-string")
-                                .foregroundStyle(.blue)
-                        }
+                        Spacer()
+                        Button(action: {
+                            model.showImagePicker.toggle()
+                        }, label: {
+                            Image(systemName: "plus")
+                                .font(.title)
+                                .foregroundColor(.black)
+                                .frame(width: 70, height: 70)
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .shadow(color: Color.black.opacity(0.07),
+                                        radius: 5, x: 5, y: 5)
+                                .shadow(color: Color.black.opacity(0.07),
+                                        radius: 5, x: -5, y: -5)
+                        })
+                        
+                        
+                        Spacer()
                     }
-                    .padding(.top, 50)
                 }
             }
             
+                    
+            if model.addNewBox {
+                Color.black.opacity(0.75)
+                    .ignoresSafeArea()
+                
+                TextField("type-here-string", text: $model.textBoxes[model.currentIndex].text)
+                    .font(.system(size: 35, weight: model.textBoxes[model.currentIndex].isBold ? .bold : .regular))
+                
+                    .colorScheme(.dark)
+                    .foregroundColor(model.textBoxes[model.currentIndex].textColor)
+                    .padding()
+                
+                
+                HStack {
+                    Button(action: {
+                        model.textBoxes[model.currentIndex].isAdded = true
+                        model.toolPicker.setVisible(true, forFirstResponder: model.canvas)
+                        model.canvas.becomeFirstResponder()
+                        withAnimation {
+                            model.addNewBox = false
+                        }
+                    }, label: {
+                        Text("add-string")
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                            .padding()
+                    })
+                    
+                    Spacer()
+                    
+                    Button(action: model.cancelTextView, label: {
+                        Text("cancel-string")
+                            .fontWeight(.heavy)
+                            .foregroundColor(.white)
+                            .padding()
+                    })
+                }
+                .overlay(
+                    HStack(spacing: 15) {
+                        ColorPicker("", selection: $model.textBoxes[model.currentIndex].textColor).labelsHidden()
+                        //.labelsHidden()
+                        
+                        Button(action: {
+                            model.textBoxes[model.currentIndex].isBold.toggle()
+                        }, label: {
+                            Text(model.textBoxes[model.currentIndex].isBold ? "Normal" : "Bold")
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                        })
+                    }
+                )
+                .frame(maxHeight: .infinity, alignment: .top)
+            }
         }
-        .navigationTitle("photo-editor-string")
+        .sheet(isPresented: $model.showImagePicker, content: {
+            ImagePicker(showPicker: $model.showImagePicker, imageData: $model.imageData)
+        })
+        .alert(isPresented: $model.showAlert, content: {
+            Alert(title: Text("message-string"), message: Text(model.message), dismissButton: .destructive(Text("ok-string")))
+        })
     }
-    
+
     private func changeFilter() {
         
     }
     
     private func loadImage() {
-        //        guard let item = pickerItem else { return }
-        
         Task {
             do {
                 processedImage = try await selectedItem?.loadTransferable(type: Image.self)
@@ -194,29 +165,25 @@ struct MainView: View {
         }
     }
     
-//    applyFilterOnce() {
-//        process
-//    }
     private func applyFilterOnce() {
         currentFilter.setValue(filterIntensity, forKey: "inputIntensity")
-
+        
         guard let outputImage = currentFilter.outputImage else { return }
-
+        
         guard let cgImage = context.createCGImage(outputImage, from: outputImage.extent) else { return }
-
+        
         let uiImage = UIImage(cgImage: cgImage)
         let image = Image(uiImage: uiImage)
         processedImage = image
     }
-
-
+    
+    
     private func applyFilter(filter: CIFilter) {
         // Set intensity if the filter supports it
         if filter.attributes.keys.contains(kCIInputIntensityKey) {
             filter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
         }
         
-        // Apply the filter
         guard let outputImage = filter.outputImage else { return }
         
         guard let cgImage = context.createCGImage(outputImage, from: outputImage.extent) else { return }
@@ -228,27 +195,15 @@ struct MainView: View {
     
     private func applyFilter() {
         currentFilter.setValue(filterIntensity, forKey: "inputIntensity")
-
+        
         guard let outputImage = currentFilter.outputImage else { return }
-
+        
         guard let cgImage = context.createCGImage(outputImage, from: outputImage.extent) else { return }
-
+        
         let uiImage = UIImage(cgImage: cgImage)
         let image = Image(uiImage: uiImage)
         processedImage = image
     }
-
-//    private func applyFilter() {
-//        currentFilter.intensity = Float(filterIntensity)
-//        
-//        guard let outputImage = currentFilter.outputImage else { return }
-//        
-//        guard let cgImage = context.createCGImage(outputImage, from: outputImage.extent) else { return }
-//        
-//        let uiImage = UIImage(cgImage: cgImage)
-//        let image = Image(uiImage: uiImage)
-//        processedImage = image
-//    }
 }
 
 
@@ -257,4 +212,5 @@ struct MainView: View {
         MainView(model: DrawingViewModel(), signingViewModel: SigningViewModel())
     }
 }
+
 

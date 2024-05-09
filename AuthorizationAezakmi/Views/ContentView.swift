@@ -10,17 +10,17 @@ import FirebaseAuth
 
 struct ContentView: View {
     @EnvironmentObject var signingViewModel: SigningViewModel
-    @EnvironmentObject var model: DrawingViewModel
+    @StateObject var model = DrawingViewModel()
     @State var a = 5
     
     var body: some View {
         
         NavigationView {
             if signingViewModel.signedIn {
-                MainView(model: model, signingViewModel: signingViewModel)
+                ChooseOptionView()
             } else {
-                LoginView(viewModel: signingViewModel)
-             }
+                LoginView(signingViewModel: signingViewModel)
+            }
         }
         .onAppear {
             signingViewModel.signedIn = signingViewModel.isSignedIn
@@ -35,12 +35,6 @@ struct ContentView: View {
         let viewModel = SigningViewModel()
         ContentView()
             .environmentObject(viewModel) 
-//            .preferredColorScheme(.light)
-        //            .environment(\.locale,
-        //                          Locale.init(identifier: "en"))
-        //        ContentView()
-        //            .environment(\.locale,
-        //                          Locale.init(identifier: "ru"))
     }
 }
 

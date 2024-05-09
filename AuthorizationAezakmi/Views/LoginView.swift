@@ -10,7 +10,7 @@ import GoogleSignIn
 
 struct LoginView: View {
     
-    @StateObject var viewModel: SigningViewModel
+    @StateObject var signingViewModel = SigningViewModel()
     @EnvironmentObject var model: DrawingViewModel
 
     @State private var isRecoveryViewPresented = false
@@ -55,13 +55,6 @@ struct LoginView: View {
                             .onSubmit {
                                 isPasswordFieldFocused = true
                             }
-                            
-                            //                        .onAppear {
-                            //                            showAlert = !isValidEmail
-                            //                        }
-                            //                        .alert(isPresented: $showAlert) {
-                            //                            Alert(title: Text("Invalid Email"), message: Text("Please enter a valid email address."), dismissButton: .default(Text("OK")))
-                            //                        }
                         }
                         
                         
@@ -95,7 +88,7 @@ struct LoginView: View {
                             if !isValidEmail || !isValidPassword {
                                 showAlert = true
                             } else {
-                                viewModel.signIn(email: email, password: password)
+                                signingViewModel.signIn(email: email, password: password)
                                 { success in
                                     isLoading = false
                                     if !success {
@@ -117,7 +110,7 @@ struct LoginView: View {
                         OrView()
                         
                         GoogleSigningButton(isSignIn: true) {
-                            viewModel.signInWithGoogle(completion: { success in
+                            signingViewModel.signInWithGoogle(completion: { success in
                                 
                             })
                         }
@@ -127,10 +120,10 @@ struct LoginView: View {
                 }
                 .padding(15)
                 .fullScreenCover(isPresented: $isMainViewPresented) {
-                    MainView(model: model, signingViewModel: SigningViewModel)
+                    ChooseOptionView()
                 }
                 .onAppear {
-                    viewModel.signInSuccessCallback = {
+                    signingViewModel.signInSuccessCallback = {
                         isMainViewPresented = true
                     }
                 }
@@ -157,7 +150,7 @@ struct LoginView: View {
                     Text("dont-have-account-string")
                         .foregroundStyle(Color.gray50)
                     
-                    NavigationLink("register-string", destination: RegistrationView(viewModel: viewModel))
+                    NavigationLink("register-string", destination: RegistrationView(signingViewModel: signingViewModel))
                 }
                 .padding(.bottom, 30)
                 
@@ -171,7 +164,7 @@ struct LoginView: View {
 }
 
 #Preview {
-    LoginView(viewModel: SigningViewModel())
+    LoginView(signingViewModel: SigningViewModel())
     //        .environmentObject(SigningViewModel())
     //
     //    LoginView()

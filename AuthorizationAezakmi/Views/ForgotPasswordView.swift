@@ -57,21 +57,3 @@ struct ForgotPasswordView: View {
         )
     }
 }
-
-//#Preview {
-    
-//    Button {
-////        self.isRecoveryViewPresented.toggle()
-//    } label: {
-//        Text("forgot-password-string")
-//    }
-//    .sheet(isPresented: true) {
-//        ForgotPasswordView()
-//        .environmentObject(@Environment(\.presentationMode))
-        
-//    }
-
-    
-//    ForgotPasswordView(presentationMode: .))
-//    ForgotPasswordView(presentationMode: ., email: <#T##String#>, isPasswordRecoveryLinkSent: <#T##Bool#>, showAlert: <#T##arg#>, errorDescription: <#T##arg#>)
-//}
