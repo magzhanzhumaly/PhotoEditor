@@ -47,7 +47,7 @@ class DrawingViewModel: ObservableObject {
             addNewBox = false
         }
         
-        if textBoxes[currentIndex].isAdded {
+        if !textBoxes[currentIndex].isAdded {
             textBoxes.removeLast()
         }
     }
@@ -56,9 +56,7 @@ class DrawingViewModel: ObservableObject {
         UIGraphicsBeginImageContextWithOptions(rect.size, false, 0)
         
         canvas.drawHierarchy(in: CGRect(origin: .zero, size: rect.size), afterScreenUpdates: true)
-        
-        let generatedImage = UIGraphicsGetImageFromCurrentImageContext()
-        
+                
         let SwiftUIView = ZStack {
             ForEach(textBoxes) { [self] box in
                 Text(textBoxes[currentIndex].id == box.id && addNewBox ? "" : box.text)
@@ -70,19 +68,22 @@ class DrawingViewModel: ObservableObject {
         }
         
         let controller = UIHostingController(rootView: SwiftUIView).view!
+        
         controller.frame = rect
         controller.backgroundColor = .clear
         canvas.backgroundColor = .clear
         
         controller.drawHierarchy(in: CGRect(origin: .zero, size: rect.size), afterScreenUpdates: true)
         
+        let generatedImage = UIGraphicsGetImageFromCurrentImageContext()
+
         UIGraphicsEndImageContext()
         
         if let image = generatedImage?.pngData() {
             UIImageWriteToSavedPhotosAlbum(UIImage(data: image)!, nil, nil, nil)
             
-            print("success-string")
-            self.message = "saved-photo-succesfully-string"
+            self.message = "Success"
+            self.showAlert.toggle()
         }
     }
     
@@ -93,7 +94,6 @@ class DrawingViewModel: ObservableObject {
         
         canvas.drawHierarchy(in: CGRect(origin: .zero, size: rect.size), afterScreenUpdates: true)
         
-        let generatedImage = UIGraphicsGetImageFromCurrentImageContext()
         
         let SwiftUIView = ZStack {
             ForEach(textBoxes) { [self] box in
@@ -112,6 +112,8 @@ class DrawingViewModel: ObservableObject {
         
         controller.drawHierarchy(in: CGRect(origin: .zero, size: rect.size), afterScreenUpdates: true)
         
+        let generatedImage = UIGraphicsGetImageFromCurrentImageContext()
+
         UIGraphicsEndImageContext()
         
         self.generatedImage = generatedImage

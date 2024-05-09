@@ -11,7 +11,7 @@ import GoogleSignIn
 class SigningViewModel: ObservableObject {
     
     var signInSuccessCallback: (() -> Void)?
-
+    
     let auth = Auth.auth()
     
     @Published var signedIn = false
@@ -26,7 +26,7 @@ class SigningViewModel: ObservableObject {
                 completion(false)
                 return
             }
-
+            
             if let user = self?.auth.currentUser {
                 if !user.isEmailVerified {
                     user.sendEmailVerification { (error) in
@@ -37,7 +37,7 @@ class SigningViewModel: ObservableObject {
                     }
                 }
             }
-
+            
             DispatchQueue.main.async {
                 self?.signedIn = true
                 completion(true)
@@ -64,7 +64,7 @@ class SigningViewModel: ObservableObject {
                     }
                 }
             }
-
+            
             DispatchQueue.main.async {
                 self?.signedIn = true
                 completion(true)
@@ -119,7 +119,5 @@ class SigningViewModel: ObservableObject {
                     completion(true)
                 }
             }
-        
     }
-    
 }
