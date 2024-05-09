@@ -1,0 +1,20 @@
+"login-string" = "Логин";
+"register-string" = "Регистрация";
+"welcome-string" = "Добро пожаловать";
+"hello-string %@" = "Здравствуйте, %@";
+"email-string" = "Email";
+"password-string" = "Пароль";
+"sign-in-with-google-string" = "Войти с Google";
+"sign-up-with-google-string" = "Зарегистрироваться с Google";
+"sign-in-string" = "Войти";
+"sign-up-string" = "Зарегистрироваться";
+"sign-out-string" = "Выйти";
+"forgot-password-string" = "Забыли пароль?";
+"sign-in-string" = "Войти";
+"sign-up-string" = "Зарегистрироваться";
+"sign-out-string" = "Выйти";
+"or-string" = "ИЛИ";
+"dont-have-account-string" = "Нету аккаунта?";
+"already-have-an-account-string" = "Уже есть аккаунт?";
+"is-signed-in-string" = "Вы зарегистрированы";
+

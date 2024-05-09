@@ -1,0 +1,49 @@
+"login-string" = "Login";
+"register-string" = "Register";
+"welcome-string" = "Welcome";
+"hello-string %@" = "Hello %@";
+"email-string" = "Email";
+"password-string" = "Password";
+"sign-in-with-google-string" = "Sign in with Google";
+"sign-up-with-google-string" = "Sign up with Google";
+"forgot-password-string" = "Forgot password?";
+"sign-in-string" = "Sign in";
+"sign-up-string" = "Sign up";
+"sign-out-string" = "Sign out";
+"or-string" = "OR";
+"dont-have-account-string" = "Don't have an account?";
+"already-have-an-account-string" = "Already have an account?";
+"is-signed-in-string" = "You are signed in";
+
+"password-recovery-string" = "Password recovery";
+"password-recovery-link-sent-to %@" = "Password recovery link has been sent to %@";
+"ok-string" = "OK";
+
+"enter-your-email-string" = "Enter your email";
+"send-recovery-email-string" = "Send Recovery Email";
+"alert-string" = "Alert";
+
+
+"forgot-password-string" = "Forgot password";
+"enter-your-email-string" = "Enter your email";
+
+"signing-in-string" = "Signing in...";
+"signing-up-string" = "Signing up...";
+"invalid-email-or-password-string" = "Invalid email or password";
+
+"select-a-picture-string" = "Select a picture";
+"invalid-string" = "Invalid credentials";
+"rotate-string" = "Rotate";
+"scale-string" = "Scale";
+"photo-editor-string" = "Photo Editor";
+"error-loading-image-string" = "Error loading image: ";
+
+"rotation-string" = "Rotation";
+"intensity-string" = "Intensity";
+"zoom-string" = "Zoom";
+"no-picture-string" = "No picture";
+"tap-to-select-a-photo-string" = "Tap to select a photo";
+"change-filter-string" = "Change Filter";
+"sepia-tone-string" = "Sepia tone";
+"remove-effect-string" = "Remove effect";
+"change-filter-string" = "Change Filter";
