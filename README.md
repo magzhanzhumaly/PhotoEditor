@@ -1,0 +1,1 @@
+A photo editor app that allows you to edit photos from your gallery upon logging in the app. You can draw with all the tools available from PencilKit, add texts with custom colors, fonts, and edit previously added texts by tapping and holding them. You can add the photos to the library or share them any other way.
